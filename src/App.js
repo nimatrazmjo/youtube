@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import SearchBar from './components/search-bar/search-bar.component';
-
 import YTSearch from 'youtube-api-search';
 
-const API_KEY = 'AIzaSyDTDh3JT7mc9r6KXqnJtTZvjZWcSTKBoWU';
+import SearchBar from './components/search-bar/search-bar.component';
+import VedioList from './components/vedio-list/vedio-list.component';
+import './App.css';
 
+const API_KEY = 'AIzaSyDTDh3JT7mc9r6KXqnJtTZvjZWcSTKBoWU';
 
 class App extends Component {
 
@@ -30,6 +30,8 @@ class App extends Component {
       <div className='container pt-4'>
 
         <SearchBar />
+
+        <VedioList vedios= {this.state.vedios} />
       </div>
     );
   }
