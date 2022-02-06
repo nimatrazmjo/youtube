@@ -13,17 +13,17 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { vedios: [] }
-
-
-
+    this.state = { 
+      vedios: [],
+      selectedVedio: null
+     }
   }
 
   componentDidMount() {
     YTSearch({
       key: API_KEY,
       term: 'surfboards'
-    },  vedios => this.setState({ vedios }));
+    },  vedios => this.setState({ vedios, selectedVedio: vedios[0] }));
   }
 
   render() {
@@ -32,8 +32,8 @@ class App extends Component {
 
         <SearchBar /> 
         <div className='d-flex'>
-        <VedioDetail vedio={this.state.vedios[0]}/>
-        <VedioList vedios= {this.state.vedios} />
+        <VedioDetail vedio={this.state.selectedVedio}/>
+        <VedioList vedios= {this.state.vedios} selectedVedio = {selectedVedio => this.setState({selectedVedio})} />
         </div>
       </div>
     );

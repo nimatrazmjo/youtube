@@ -2,11 +2,11 @@ import React from 'react';
 
 import './vedio-list-item.style.scss';
 
-const VedioListItem = ({ vedio }) => {
+const VedioListItem = ({ vedio, selectedVedio }) => {
   
   const { snippet: { thumbnails: { default: { url } },title } } = vedio
   return (
-    <li className='list-group-item'>
+    <li className='list-group-item cursor-pointer' onClick={()=> selectedVedio(vedio)}>
       <div className='vedio-list d-flex media'>
         <div className='media-left'>
           <img className='media-object px-3' src={url} />
