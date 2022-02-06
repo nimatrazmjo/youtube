@@ -15,22 +15,25 @@ class App extends Component {
 
     this.state = { 
       vedios: [],
-      selectedVedio: null
+      selectedVedio: null,
      }
   }
 
   componentDidMount() {
-    YTSearch({
-      key: API_KEY,
-      term: 'surfboards'
-    },  vedios => this.setState({ vedios, selectedVedio: vedios[0] }));
+    this.VedioSearch('Football');
   }
 
+  VedioSearch (term) {
+    YTSearch({
+      key: API_KEY,
+      term: term
+    },  vedios => this.setState({ vedios, selectedVedio: vedios[0] }));
+  }
   render() {
     return (
       <div className='container pt-4'>
 
-        <SearchBar /> 
+        <SearchBar search={searchTerm => this.VedioSearch(searchTerm)}/> 
         <div className='d-flex'>
         <VedioDetail vedio={this.state.selectedVedio}/>
         <VedioList vedios= {this.state.vedios} selectedVedio = {selectedVedio => this.setState({selectedVedio})} />
