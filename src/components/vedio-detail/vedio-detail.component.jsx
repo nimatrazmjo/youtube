@@ -1,10 +1,11 @@
 import React from 'react';
 
+import './vedio-detail.style.scss';
+
 const VedioDetail = ({vedio}) => {
   if (!vedio) {
     return <div>loading</div>
   }
-  console.log(vedio);
   const { snippet:{title, description}, id: {videoId} } = vedio;
   const url = `https://www.youtube.com/embed/${videoId}`;
  return (
@@ -13,8 +14,8 @@ const VedioDetail = ({vedio}) => {
         <iframe className='embed-responsive-item w-100' height="500px"  src={url}></iframe>
       </div>
       <div className="details">
-        <div className="text-uppercase">{title}</div>
-        <div className="">{description}</div>
+        <div className="text-uppercase">{title.slice(0, 80)}...</div>
+        <div className="description">{description}</div>
       </div>
   </div>
  );
